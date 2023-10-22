@@ -77,6 +77,8 @@ class IndeedScraper(Scraper):
 
         if sc_values:
             params["sc"] = "0kf:" + "".join(sc_values) + ";"
+        params['sort'] = 'date'
+        params['fromage'] = '1'
         try:
             response = session.get(
                 f"{self.url}/jobs",
