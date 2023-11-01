@@ -56,9 +56,8 @@ class IndeedScraper(Scraper):
         :return: jobs found on page, total number of jobs found for search
         """
         self.country = scraper_input.country
-        domain = self.country.domain_value
+        domain = self.country.indeed_domain_value
         self.url = f"https://{domain}.indeed.com"
-        session = create_session(self.proxy)
 
         params = {
             "q": scraper_input.search_term,
@@ -79,6 +78,7 @@ class IndeedScraper(Scraper):
             params["sc"] = "0kf:" + "".join(sc_values) + ";"
         params['sort'] = 'date'
         try:
+            session = create_session(self.proxy, is_tls=True)
             response = session.get(
                 f"{self.url}/jobs",
                 headers=self.get_headers(),
@@ -259,12 +259,8 @@ class IndeedScraper(Scraper):
         except (KeyError, TypeError, IndexError):
             return None
 
-        soup = BeautifulSoup(
-            job_description, "html.parser"
-        )
-        text_content = " ".join(
-            soup.get_text(separator=" ").split()
-        ).strip()
+        soup = BeautifulSoup(job_description, "html.parser")
+        text_content = " ".join(soup.get_text(separator=" ").split()).strip()
 
         return text_content
 
