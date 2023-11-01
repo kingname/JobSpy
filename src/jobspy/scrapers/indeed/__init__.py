@@ -354,6 +354,7 @@ class IndeedScraper(Scraper):
             "sec-ch-ua-platform": '"Windows"',
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
+            "cookies": "cf_clearance=hIlcArWuTDJ1SPC5zVkKVCJwYNyb9jdwd4NJc5gAkbs-1697986046-0-1-8cc9128c.ff8cc912.171e5a89-250.0.0;",
             "sec-fetch-site": "same-origin",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
         }
